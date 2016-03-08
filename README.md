@@ -12,6 +12,7 @@ This gem is based on a concept and code [originally by Joel Turkel](http://blog.
 has no automated tests (testing concurrency is painful). But it's working for me, and you
 only use it in test environment anyway, so if you're suffering from horrible race
 conditions in test, it's worth a shot to see if it helps, and entails little risk.
+It's also only a few dozen lines of code in one class, please do look at the source. 
 
 ## Installation/Usage
 
