@@ -61,6 +61,6 @@ or capybara, databasecleaner, or the test_after_commit gem we were using
 with transactional testing strategy. I dunno, debugging this stuff
 is *hard*... but this seems to have finally worked.
 
-If you are still having problems, I recommend
-[my essay on an overview of the issues](https://bibwild.wordpress.com/2016/02/18/struggling-towards-reliable-capybara-javascript-testing/).
+If you are still having problems, I recommend consulting
+[my essay on an overview of the issues](https://bibwild.wordpress.com/2016/02/18/struggling-towards-reliable-capybara-javascript-testing/) for background and more ideas.
 
