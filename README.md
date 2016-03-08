@@ -55,8 +55,8 @@ middle-ware, to get reliable tests.
 
 I can't explain why: Using transactional strategy for *non-JS tests*, as
 DatabaseCleaner recommends *ought* to work. But it didn't, and I even got
-some segfaults with only the middleware but still transactional strategy
-for non-JS tests(!).  Could be a bug in MRI or the pg gem (segfault, really?),
+some segfaults(!) with only the middleware but still transactional strategy
+for non-JS tests.  Could be a bug in MRI or the pg or poltegeist gems (segfault, really?),
 or capybara, databasecleaner, or the test_after_commit gem we were using
 with transactional testing strategy. I dunno, debugging this stuff
 is *hard*... but this seems to have finally worked.
