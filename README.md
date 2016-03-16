@@ -32,16 +32,20 @@ Or install it yourself as:
 
 2. Add this to your `./config/environments/test.rb`, to add the custom middleware in test env:
 
-    require 'rack_request_blocker'
-    config.middleware.insert_before 0, RackRequestBlocker
+~~~ruby
+require 'rack_request_blocker'
+config.middleware.insert_before 0, RackRequestBlocker
+~~~
 
 3. Add this to your `spec_helper.rb`/`rails_helper.rb`
 
 Add _before_ your `DatabaseCleaner.clean` command, probably in a `before(:each)`:
 
-    if example.metadata[:js] || example.metadata[:driver] != :rack_test
-      RackRequestBlocker.wait_for_no_active_requests(for_example: example)
-    end
+~~~ruby
+if example.metadata[:js] || example.metadata[:driver] != :rack_test
+  RackRequestBlocker.wait_for_no_active_requests(for_example: example)
+end
+~~~
 
 This says for each JS test, block incoming requests to the embedded dummy Rails app,
 and then wait until any in-progress request actions are complete, before proceeding
