@@ -18,39 +18,39 @@ It's also only a few dozen lines of code in one class, please do look at the sou
 
 1. Add this line to your application's Gemfile:
 
-```ruby
-gem 'rack_request_blocker'
-```
+    ```ruby
+    gem 'rack_request_blocker'
+    ```
 
-And then execute:
+    And then execute:
 
-    $ bundle
+        $ bundle
 
-Or install it yourself as:
+    Or install it yourself as:
 
-    $ gem install rack_request_blocker
+        $ gem install rack_request_blocker
 
 2. Add this to your `./config/environments/test.rb`, to add the custom middleware in test env:
 
-~~~ruby
-require 'rack_request_blocker'
-config.middleware.insert_before 0, RackRequestBlocker
-~~~
+    ~~~ruby
+    require 'rack_request_blocker'
+    config.middleware.insert_before 0, RackRequestBlocker
+    ~~~
 
 3. Add this to your `spec_helper.rb`/`rails_helper.rb`
 
-Add _before_ your `DatabaseCleaner.clean` command, probably in a `before(:each)`:
+    Add _before_ your `DatabaseCleaner.clean` command, probably in a `before(:each)`:
 
-~~~ruby
-if example.metadata[:js] || example.metadata[:driver] != :rack_test
-  RackRequestBlocker.wait_for_no_active_requests(for_example: example)
-end
-~~~
+    ~~~ruby
+    if example.metadata[:js] || example.metadata[:driver] != :rack_test
+      RackRequestBlocker.wait_for_no_active_requests(for_example: example)
+    end
+    ~~~
 
-This says for each JS test, block incoming requests to the embedded dummy Rails app,
-and then wait until any in-progress request actions are complete, before proceeding
-(to your `DatabaseCleaner.clean`, and then on to the next test. ) It relies on the
-custom middleware to be able to do so.
+    This says for each JS test, block incoming requests to the embedded dummy Rails app,
+    and then wait until any in-progress request actions are complete, before proceeding
+    (to your `DatabaseCleaner.clean`, and then on to the next test. ) It relies on the
+    custom middleware to be able to do so.
 
 ## Will this take care of all my unreliable test issues?
 
