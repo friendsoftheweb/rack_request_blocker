@@ -12,7 +12,11 @@ This gem is based on a concept and code [originally by Joel Turkel](http://blog.
 has no automated tests (testing concurrency is painful). But it's working for me, and you
 only use it in test environment anyway, so if you're suffering from horrible race
 conditions in test, it's worth a shot to see if it helps, and entails little risk.
-It's also only a few dozen lines of code in one class, please do look at the source. 
+It's also only a few dozen lines of code in one class, please do look at the source.
+
+Also, a message will be printed out for each example that does leave app actions still running
+when it ends, so you could use RackRequestBlocker temporarily to identify if you have that
+going on, and try to fix it (can be challenging), and then disable RackRequestBlocker. 
 
 ## Installation/Usage
 
